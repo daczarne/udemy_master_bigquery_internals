@@ -19,6 +19,8 @@ GCP includes the following services
 
 ![](storage-services.png)
 
+<br>
+
 - Big data services (stream and batch processing)
   - **BigQuery** data warehouse with SQL querying capabilities
   - **Cloud Dataflow** data processing service for batch and stream based on Apache Beam's programming model
@@ -29,4 +31,35 @@ GCP includes the following services
   - **Cloud Composer** is used to author, schedule and monitor Apache Airflow pipelines and workflows
   - **Cloud Data Fusion** used for integration of ETL workflows
 
-- AI and ML services
+<br>
+
+- AI and ML services (ranging from pre-built to in-house solutions)
+  - **Cloud AI** is used for pre-trained and pre-built models. This includes:
+    - Cloud Video Intelligence API
+    - Cloud Speech-to-Text
+    - Cloud Vision API
+    - Cloud Natural Language API
+    - Cloud Translation
+    - Dialog Flow
+  - **AutoML** similar to Cloud AI but allows the user to configure the pre-built models (to some basic extent). This includes:
+    - AutoML Natural Language
+    - AutoML Tables
+    - AutoML Translation
+    - AutoML Video Intelligence
+    - AutoML Vision
+  - **BigQueryML** is used to build and train ML models using SQL syntax. This includes SQL statements for:
+    - Linear regression
+    - Binary and multiclass logistic regression
+    - K-means clustering
+    - Matrix Factorization
+    - Time series
+    - Boosted trees
+    - Deep Neural Networks (DNN)
+    - TensorFlow model importing
+  - **AI platform** is used for building ML models from the ground up
+
+![](ai-and-ml-services.png)
+
+## Big data ecosystem
+
+![](big-data-ecosystem.png)
