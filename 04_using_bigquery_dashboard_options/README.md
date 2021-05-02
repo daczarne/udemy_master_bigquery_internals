@@ -13,4 +13,7 @@ Next we can select how query results should be saved. By default, GBQ saves all 
 When writing to permanent tables we need to also select the disposition (*write if empty*, *append to table*, or *overwrite table*). The tables been queried must be in the same location as the destination data set. The "Allow large results" checkbox enables results larger than 10GB (the max default limit).
 
 **Job priority** determines how the job is executed. *Interactive* jobs are run immediately. *Batch* jobs start as soon as resources are available in the shared resource pool.
- 
+
+# Caching
+
+In order for GBQ to cache results, the query statement should be exactly the same. They are also not cached if their is a destination table specified to store the results (CREATE, INSERT, etc). They will be re-run if the tables or views used in the query have changed. Query results can never be cached for tables with streaming ingestion. They also cannot be cached if the query uses non-deterministic functions (like NOW(), CURRENT_USER(), CURRENT_DATE(), etc). Queries will not be cached if they use external results (like BigTable or CloudStorage). Lastly, the result set must be smaller than 10GBs to be cached.
