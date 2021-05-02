@@ -58,3 +58,11 @@ Keep in mind that cost reduction does not apply if the filter is the result of a
 - Cached results are not supported for wildcard queries
 
 - DML statements are not allowed
+
+## Scheduled queries
+
+Schedule queries must be written in standard SQL (DDL or DML). First we write the query, and the un set up a Cron Job to execute them. The Schedule Query feature uses the services of the DataTransfer service in GCP. If you are not sure whether the Data Transfer API is enabled, search for it in the lookup bar and you'll be redirected to its dashboard (where you can enable it).
+
+To schedule a query you must complete the scheduling form by supplying a name, a repeat interval (if you select custom, you must supply a [Cron style specification](https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format)), a start and end times. The result destination options will not be displayed if you are using a statement that already specifies them. You can specify a service account to which run the query using its credentials. If no service account is provided, then user credentials must be supplied.
+
+It is recommended to also define the backfill mechanism that the query will use. Go to the schedule queries tab, click on the query, click on the more button, and select the backfill option. Keep in mind that start date is inclusive, while end date is not.
