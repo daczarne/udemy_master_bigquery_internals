@@ -10,6 +10,20 @@ In BigQuery, tables can be partitioned by one of:
 - Date or timestamp columns
 - Integer columns
 
+## Ingestion time partitioning
+
 Tables partitioned by ingestion time will have a pseudo-column called `_PARTITIONDATE` if hourly partitioning was used, or two pseudo-columns `_PARTITIONTIME` and `_PARTITIONDATE` if daily partitioning was used. `_PARTITIONTIME` pseudo-columns contain a time stamp representation of the time in which the partition was ingested. `_PARTITIONDATE` contains the date in which the partition was ingested. Both pseudo-column names are reserved language keywords.
 
-We can read meta data form the partitions by accessing the `__PARTITIONS_SUMMARY__` read-only tables. This needs to be done in legacy SQL since standard SQL does not yet support the `$__<table_name>__` decorator. This table contains all the information regarding the partitions in a given data set. Keep in mind that all time values use UTC timezone.
+We can read meta data form the partitions by accessing the `__PARTITIONS_SUMMARY__` read-only tables. This needs to be done in legacy SQL since standard SQL does not yet support the `$__PARTITIONS_SUMMARY__` decorator. This table contains all the information regarding the partitions in a given data set. Keep in mind that all time values use UTC timezone.
+
+## Date partitioned tables
+
+Rules for partitioning by date column
+
+- the partitioning column must be a scalar date or timestamp column with mode `NULLABLE` or `REQUIRED` (it can not be `REPEATED`)
+- the partitioning column must be a top level field (it can not be a leaf column from a `STRUCT`)
+
+The `_PARTITIONTIME` pseudo-column will not be crated since the partitioning column is present in the data itself. Rows with no value for the partitioning column will be included in the `__NULL__` partition. Rows with date values outside the allowed range of dates will be included in the `__UNPARTITIONED__` partition. This partition also holds the un-partitioned data from real-time buffer streams.
+
+## Integer partitioned data
+
