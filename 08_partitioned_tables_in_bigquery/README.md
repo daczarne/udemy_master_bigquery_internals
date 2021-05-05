@@ -49,3 +49,28 @@ Other than the ability to use the partitions, partitioned tables are not differe
 When deleting data, keep in mind that you can't delete the `__NULL__` nor the `__UNPARTITIONED__` partitions.
 
 Insertion of new rows can be done just as with non-partitioned tables. Just keep in mind that if the table is ingestion partitioned, then we must supply the `_PARTITIONTIME` to which the new rows must be inserted.
+
+## Best practices
+
+- use partition filters (`WHERE` statement that uses the partitioning column)
+- `AND` conditions don't remove partition elimination, but `OR` conditions do
+- functions of partitions columns don't allow for partition elimination
+- `WHERE` clauses that use sub-query expressions that use the same table don't allow for partition elimination
+- when used for partition elimination, pseudo-columns must always be on the right-side of the comparison (as to avoid calculations on pseudo-columns). This means that we should prefer
+
+``` sql
+SELECT  *
+FROM `bigquery-demo-285417.dataset1.demo_part_ingestion`
+WHERE _PARTITIONTIME > TIMESTAMP_SUB(TIMESTAMP('2020-09-15'), INTERVAL 1 DAY)
+```
+
+over
+
+``` sql
+SELECT *
+FROM `bigquery-demo-285417.dataset1.demo_part_ingestion`
+WHERE TIMESTAMP_ADD(_PARTITIONTIME, INTERVAL 1 DAY) > '2020-09-15'
+```
+
+- don't compare partition columns to other columns in the table
+- don't create too many partitions in a table
