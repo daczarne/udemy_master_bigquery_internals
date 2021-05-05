@@ -1,0 +1,1 @@
+SELECT * FROM [dataset1.demo_part_ingestion$__PARTITIONS_SUMMARY__]
