@@ -5,5 +5,3 @@ FROM `bigquery-public-data.noaa_gsod.gsod195*`
 WHERE max != 9999.9
 GROUP BY mo
 ORDER BY mo DESC
-
-
