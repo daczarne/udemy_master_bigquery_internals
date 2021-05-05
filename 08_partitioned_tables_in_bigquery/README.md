@@ -42,3 +42,10 @@ Rows with missing data for the partitioning column will be stored in the `__NULL
 - the maximum number of partitions modified by a single job is 4,000
 - the maximum number of partitions modified per day is 5,000 for ingestion time partitioned tables, or 30,000 for date or integer partitioned tables
 
+## DML statements on partitioned tables
+
+Other than the ability to use the partitions, partitioned tables are not different that non-partitioned tables. In addition to all standard manipulations, you can also set a partition expiration date. You can do this with an `ALTER TABLE` statement. Different expiration times can not be set for different partitions. Table expiration takes precedence over partition expiration.
+
+When deleting data, keep in mind that you can't delete the `__NULL__` nor the `__UNPARTITIONED__` partitions.
+
+Insertion of new rows can be done just as with non-partitioned tables. Just keep in mind that if the table is ingestion partitioned, then we must supply the `_PARTITIONTIME` to which the new rows must be inserted.
