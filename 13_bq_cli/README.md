@@ -107,3 +107,13 @@ Flags:
 - `--udf_resource` specifies the Cloud Storage URI or the path to a local UDF code file. Repeat for multiple UDFs.
 
 Boolean flags can be simplified by appending the `no` keyword in front of the flag. So `--nouse_cache` is the same as `--use_cache=false`.
+
+## Dataset creation
+
+Entities can be created with the `mk` command with the `--dataset` flag (or its shortcut `-d`). If both flag and its shortcut are omitted, then the `mk` command defaults to creating a dataset
+
+``` zsh
+bq mk --dataset
+```
+
+Additional flags can be use to set the dataset options.
