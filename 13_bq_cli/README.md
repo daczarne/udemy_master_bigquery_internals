@@ -75,3 +75,35 @@ Global flags include
 A complete list of global flags can be found [here](https://cloud.google.com/bigquery/docs/reference/bq-cli-reference#bq_global_flags).
 
 ## Query commands
+
+To run a SQL query via command line use the `query` command. To use Standard SQL, set the `--use_legacy_sql` flag to `false`, and then provide a valid SQL statement. In Cloud shell, the query statement needs to be written in single quotes, `'`. In the local SDK, the quotes can either be removed entirely, or replaced with double-quotes `"`.
+
+``` zsh
+bq query --use_standard_sql=false <query_statement>
+```
+
+Flags:
+
+- `--append_table` will write query results to the supplied `--destination_table`
+- `--replace` will replace data in `--destination_table` with query results. Its default value is `false`
+- `--destination_schema` specify the schema for the `--destination_table`. Only needed if the destination table does not yet exist
+- `--time_partitioning_field` will partition the table based on the time column provided
+- use `--time_partitioning_type` to partition table based on ingestion time. Values can be `DAY`, `HOUR`, `MONTH`, or `YEAR`
+- use `--time_partitioning_expiration` to set the expiration (in seconds) for the table or view partitioning. A negative value indicates no expiration.
+- `--clustering_fields` is a list of up to 4 comma separated column names on which to cluster the destination table
+- use `--destination_kms_key` to provide the resource ID of a customer generated encryption key
+- keep `--batch` equal to `true` if you want the query to be run in batch mode
+- `--maximum_bytes_billed` will set the maximum number of bytes that are allowed for query statements. If the query exceeds the limit, it fails without generating cost.
+- use the `--label` flag to apply flags to a query in the form of key-value pairs. To pass multiple pairs, repeat the flag
+- `--dry-run` is a boolean flag that acts as a validator for the command. When set to `true`, the query is validated but not run. It is `true` by default
+- `--max-rows` takes an integer specifying the number of rows to return in the query results. Default is 100.
+- if `--require_cache` is set to `true` then the query will only be run if it can be retrieved from the cache. By default it's `false`.
+- set `--use_cache` to `false` if you don't want the query to cache results.
+- use the `--schedule` flag to specify a Cron compatible scheduling value.
+- `--display_name` allows us to name the schedule
+- with `--target_dataset` we can supply a different dataset for where to store query results. This can not be used in conjunction with the `--destination_table` flag.
+- `--allow_large_results` enables lard destination table sizes for legacy SQL queries
+- `--flatten_results` boolean that when set to `true` will flatten nested and repeated fields
+- `--udf_resource` specifies the Cloud Storage URI or the path to a local UDF code file. Repeat for multiple UDFs.
+
+Boolean flags can be simplified by appending the `no` keyword in front of the flag. So `--nouse_cache` is the same as `--use_cache=false`.
