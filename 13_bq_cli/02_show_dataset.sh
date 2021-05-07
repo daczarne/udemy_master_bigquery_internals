@@ -1,0 +1,1 @@
+bq show --dataset bigquery-demo-285417:dataset1
