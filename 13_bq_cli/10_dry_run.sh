@@ -1,4 +1,4 @@
-# * For the query to just be validated but not run, include the --dry_run flag
+#* For the query to just be validated but not run, include the --dry_run flag
 
 bq query \
 --use_legacy_sql=false \
