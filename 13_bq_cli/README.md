@@ -117,3 +117,24 @@ bq mk --dataset
 ```
 
 Additional flags can be use to set the dataset options.
+
+## Table creation
+
+To create tables use the `mk` command with the `--table` flag or the `-t` shortcut.
+
+``` zsh
+bq mk --table <project_name>:<dataset_name>.<table_name>
+```
+
+Additional flags can be use to set the table options. For example:
+
+- use the `--expiration` flag to set the table expiration in seconds
+- use the `--description` flag to set the table description
+- use the `--label` flag to set a label in the form of `key:value` pairs. You can set as many labels as you want by repeating the flag
+- set `--require_partition_filter=true` to enforce the usage of table partitions
+- set `--time_partitioning_type` to `DAY` to make the table an ingestion time partitioned table (on ingestion day). It can also be `HOUR`. The default is `DAY`
+- use the `--time_partitioning_expiration` to set an expiration number of seconds for the partitions
+- use the `--time_partitioning_field <column_name>` flag to set the partition based on `<column_name>`
+- use the `--integer_partitioning <column_name>,<start_value>,<end_value>,<interval>` to set an integer partitioning based on `<column_name>` that starts at `<start_value>`, ends at `<end_value>`, and uses `<interval>` steps
+- use the `--clustering_fields` flag to set up table clustering
+- use the `--schema` to supply the table schema. This can be done in line, or by setting the flag value to the path to a JSON file containing the table schema. In-line schemas must be supplied using `key:value` pairs and they don't support specifying column descriptions, or mode. All columns are set to `NULLABLE` mode. JSON schema files must be in a locally accessible location (cloud resources are not allowed).
