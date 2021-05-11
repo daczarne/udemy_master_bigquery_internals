@@ -138,3 +138,13 @@ Additional flags can be use to set the table options. For example:
 - use the `--integer_partitioning <column_name>,<start_value>,<end_value>,<interval>` to set an integer partitioning based on `<column_name>` that starts at `<start_value>`, ends at `<end_value>`, and uses `<interval>` steps
 - use the `--clustering_fields` flag to set up table clustering
 - use the `--schema` to supply the table schema. This can be done in line, or by setting the flag value to the path to a JSON file containing the table schema. In-line schemas must be supplied using `key:value` pairs and they don't support specifying column descriptions, or mode. All columns are set to `NULLABLE` mode. JSON schema files must be in a locally accessible location (cloud resources are not allowed).
+
+## Loading data into tables
+
+To load data into tables we use the `load` command. We need to supply the table name and its schema too. If the table does not exist, it will be created with the supplied schema.
+
+``` zsh
+bq load [<project_name>:]<dataset_name>.<table_name> <path_to_data_file> --schema <path_to_schema_file.json>
+```
+
+We can also use the `--auto-detect` flag instead of supplying a schema definition. All options from the UI are available in the CLI in the form of flags.
