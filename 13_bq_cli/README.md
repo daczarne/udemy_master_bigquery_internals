@@ -148,3 +148,31 @@ bq load [<project_name>:]<dataset_name>.<table_name> <path_to_data_file> --schem
 ```
 
 We can also use the `--auto-detect` flag instead of supplying a schema definition. All options from the UI are available in the CLI in the form of flags.
+
+## Schema relaxation
+
+We can relax a table's schema using the command line using the `--schema_update_option` during `query` or `load` commands. The value of the flag will update the schema of the destination table. Two values are allowed for this flag:
+
+- `ALLOW_FIELD_ADDITION`
+- `ALLOW_FIELD_RELAXATION` will relax `REQUIRED` column to `NULLABLE`
+
+## Copying partitions
+
+To run copy operations we use the `bq cp` command.
+
+``` zsh
+bq cp
+```
+
+Its flags include:
+
+- `--append_table` or `-a` to copy a table and append it to an existing table. Its default value is `false`
+- `--destination_kms_key` for encryption keys
+- `--force` or `-f` to force overwrite of the destination table (in case it exists). Default value is `false`
+- `--no_clobber` or `-n` to prevent overwrite of destination table (in case it already exists). Default is `false`
+
+We can copy partitions onto non-partitioned tables, and even use the `-f` option to force overwrite in the destination table. To copy a partition from a source table to a partition in a destination table, just add the `$<partition>` in the destination table in the `cp` command.
+
+## Removing partitions
+
+To remove a partition we use the `bq rm` command.
