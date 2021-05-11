@@ -1,4 +1,4 @@
-# * When using multiple flags it's better to break down the code with \
+#* When using multiple flags it's better to break down the code with \
 
 bq query \
 --use_legacy_sql=false \
