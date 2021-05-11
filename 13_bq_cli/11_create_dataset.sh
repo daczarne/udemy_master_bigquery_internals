@@ -1,4 +1,4 @@
-# * Create a dataset
+#* Create a dataset
 
 bq mk \
 --default_table_expiration 4000 \
