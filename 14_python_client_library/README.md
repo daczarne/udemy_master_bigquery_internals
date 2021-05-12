@@ -15,3 +15,20 @@ Once the script is finished just run it from the terminal:
 ``` python
 python3 <path_to_script.py>
 ```
+
+## Table creation
+
+To create a table we use the `LoadJobConfig` class. A complete list of attributes of the class can be found [here](https://googleapis.dev/python/bigquery/latest/generated/google.cloud.bigquery.job.LoadJobConfig.html). The `schema` attribute can be set with a python `list` or a JSON file.
+
+If the data is in disk we read it as we would normally do in Python. If its in a cloud storage system, then we do the same, but passing the url as the path argument to the `open` function.
+
+Once a `job` object is created, we can call the `result` method for the table to be created. But if we want to see the uploaded data we need to call the `get_table` method of the `client` object.
+
+As with the create dataset script, we just need to run it in terminal once we are finished:
+
+``` python
+python3 <path_to_script.py>
+```
+
+## Query tables
+
