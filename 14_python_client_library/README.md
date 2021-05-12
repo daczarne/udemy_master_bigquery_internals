@@ -32,3 +32,8 @@ python3 <path_to_script.py>
 
 ## Query tables
 
+To run a query just create the query statement as a character string, and pass it as the argument of a call to the `query` method of the `Client` instance that you've defined.
+
+Since the query statement can be any valid statement (DDL or DML), we can use this same approach to create tables, views, materialized views, etc.
+
+The downside with this method is that since the `query` string is just a string for the Python interpreter, you will not be warned of any errors.
