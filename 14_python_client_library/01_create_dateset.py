@@ -1,13 +1,13 @@
 from google.cloud import bigquery
 
 #* Set service account key
-SERVICE_ACCOUNT_JSON = "path_to_key.json"
+SERVICE_ACCOUNT_JSON = r'<path_to_key.json>'
 
 #* Construct a BigQuery client object.
 client = bigquery.Client.from_service_account_json(SERVICE_ACCOUNT_JSON)
 
 #* Set dataset_id to the ID of the dataset to create.
-dataset_id = "project_name.dataset_name"
+dataset_id = "<project_name>.<dataset_name>"
 
 #* Construct a full Dataset object to send to the API using the Dataset class.
 dataset = bigquery.Dataset(dataset_id)
