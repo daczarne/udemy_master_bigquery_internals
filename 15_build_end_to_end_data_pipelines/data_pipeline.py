@@ -62,6 +62,7 @@ def to_json(csv_str):
 
 #! #################### !#
 #! Apache Beam pipeline !#
+#! #################### !#
 
 
 #* Create an argument parser object
@@ -202,6 +203,7 @@ else:
 
 #! ################################# !#
 #! Create a view of delivered orders !#
+#! ################################# !#
 
 #* View definitions
 view_name = "<view_name>"
