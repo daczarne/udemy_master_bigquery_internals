@@ -8,7 +8,7 @@ Pipeline Architecture:
 - **Ingestion layer:** because we are simulating the situation in which the data is already in cloud storage, we don't need an ingestion layer.
 - **Processing layer:** data is not clean so we need a processing layer for data transformations. For this layer we'll use Cloud Dataflow. Transformations will be written in Apache Beam (sent via a Python script to the GCP servers).
 - **Storage layer:** because we are using structured data, we'll storage it in BigQuery. This will allow data analysts to run SQL queries on it.
-- **Scheduler**: since the pipeline needs to be run daily, we'll use Cloud Composer to schedule the jobs. This is a managed workflow orchestration service built on Apache Airflow.
+- **Scheduler:** since the pipeline needs to be run daily, we'll use Cloud Composer to schedule the jobs. This is a managed workflow orchestration service built on Apache Airflow.
 
 ## Running the pipeline
 
