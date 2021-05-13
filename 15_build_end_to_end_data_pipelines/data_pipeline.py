@@ -163,7 +163,7 @@ except:
 #* Define table schema (needs to be the same as the JSON)
 table_schema = 'customer_id:STRING,date:STRING,timestamp:STRING,order_id:STRING,items:STRING,amount:STRING,mode:STRING,restaurant:STRING,status:STRING,ratings:STRING,feedback:STRING,new_col:STRING'
 
-#* Use the WriteToBigQuery method to load the data con delivered orders
+#* Use the WriteToBigQuery method to load the data con delivered orders. You can find the complete documentation for this methon here https://beam.apache.org/releases/pydoc/2.15.0/apache_beam.io.gcp.bigquery.html
 (
 	delivered_orders
 	| 'delivered to json' >> beam.Map(to_json)
