@@ -1,6 +1,6 @@
 from google.cloud import bigquery
 
-SERVICE_ACCOUNT_JSON = r"<path_to_json_key"
+SERVICE_ACCOUNT_JSON = r"<path_to_json_key>"
 
 #* Construct a BigQuery client object.
 client = bigquery.Client.from_service_account_json(SERVICE_ACCOUNT_JSON)
