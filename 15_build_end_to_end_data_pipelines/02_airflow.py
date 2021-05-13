@@ -26,9 +26,9 @@ with models.DAG(
 	#* Which tasks should be run? The complete documentation to the Python Operator can be found here http://airflow.apache.org/docs/apache-airflow/1.10.6/_api/airflow/contrib/operators/dataflow_operator/index.html
 	t1 = DataFlowPythonOperator(
 		task_id = 'beamtask',
-		py_file = '<path_to_python_file.py>',
+		py_file = '<path_to_python_file_in_the_bucket.py>',
 		options = {
-			'input': '<input_file_location>'
+			'input': '<path_to_input_file_in_the_bucket>'
 		}
 	)
 

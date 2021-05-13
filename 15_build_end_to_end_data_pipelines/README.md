@@ -34,6 +34,8 @@ After we've built the pipeline we need to schedule it so that it runs at specifi
 4. We need to provide a `frequency` that determines how ofter the workflow will be run
 5. Lastly, we'll provide a `retry` option that set after what time interval it should retry in case of an exception
 
-``` zsh
-pip3 install apache-airflow[gcp]
-```
+## Cloud Composer environment
+
+To run our DAG we first need to build a Cloud Composer environment using the cloud command line. To do so, search for *Composer* on the list of GCP services, and enable the API (if asked to do so). Then click on *CREATE ENVIRONMENT*. Provide a name to the environment and configure the node (minimum number of nodes is 3, location, machine type, etc). If you get an `Insufficient regional quota to satisfy` error it means that you need to select another location. For disk size the minimum is 20GB. If left empty it defaults to 100GB. Select the service account to be used (if empty it will choose the default compute service account for the project). For Airflow image version choose the latest one. The Python version that you choose should be the same as the one in which you wrote the workflow. Finally, click on the *CREATE* button. The environment might take some time to be created.
+
+With the environment you'll get a bucket where you can upload the DAGs. If later on you delete the environment, the Bucket will not be deleted automatically, you need to do it yourself. You also get an Airflow webserver link. This will take you to the Airflow DAG dashboard where you can see and manage all the DAGs.
