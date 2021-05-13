@@ -23,3 +23,17 @@ Upload the code with the *Upload File* option on the cloud console. You can use 
 ``` zsh
 python <file_name.py> --input <path_to_cloud_storage_data_file.csv> --temp_location <bucket_name>
 ```
+
+## Scheduling the pipeline
+
+After we've built the pipeline we need to schedule it so that it runs at specific frequencies (for example, every day). To do so we will use Cloud Composer. This GCP service is a fully managed implementation of Apache Airflow. In Airflow, workflows are written in the form of DAGs. We need to supply:
+
+1. The python code of the DAG (could be other languages like Go or C#)
+2. This code will be run in Dataflow runner, the GCP compute service that we've chosen
+3. We need to provide a `start_date` for our workflow
+4. We need to provide a `frequency` that determines how ofter the workflow will be run
+5. Lastly, we'll provide a `retry` option that set after what time interval it should retry in case of an exception
+
+``` zsh
+pip3 install apache-airflow[gcp]
+```
