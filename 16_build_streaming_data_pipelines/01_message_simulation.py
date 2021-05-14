@@ -18,6 +18,7 @@ with open('food_daily.csv') as f_in:
 	for line in f_in:
 		#* Data must be a bytestring
 		data = line
+		#* Publish the messages
 		future = publisher.publish(topic_name, data = data)
 		print(future.result())
 		time.sleep(1)
