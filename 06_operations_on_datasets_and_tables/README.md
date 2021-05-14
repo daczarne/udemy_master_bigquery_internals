@@ -10,7 +10,7 @@ To automate this process we can go to *Transfers* -> *Create transfer*. Select t
 
 There are some quota limits for transfer jobs that depend on whether they are in region or cross region jobs:
 
-![](transfer-quotas.png)
+![](img/transfer-quotas.png)
 
 Also, keep in mind that
 
