@@ -8,7 +8,7 @@ GCP includes the following services
   - **Google Kubernetes Engine** (GKE) is a Cass (containers as a service) solution
   - **Cloud Functions** is a Faas (functions as a service) solution
 
-![](compute-services.png)
+![](img/compute-services.png)
 
 - Storage services
   - **Cloud Storage** is a unified object storage service to store any kind of data
@@ -17,7 +17,7 @@ GCP includes the following services
   - **Cloud Datastore** is a NoSQL DB with ACID compliant transactions
   - **Cloud Spanner** for RDBMS data with large datasets 
 
-![](storage-services.png)
+![](img/storage-services.png)
 
 <br>
 
@@ -58,8 +58,8 @@ GCP includes the following services
     - TensorFlow model importing
   - **AI platform** is used for building ML models from the ground up
 
-![](ai-and-ml-services.png)
+![](img/ai-and-ml-services.png)
 
 ## Big data ecosystem
 
-![](big-data-ecosystem.png)
+![](img/big-data-ecosystem.png)
