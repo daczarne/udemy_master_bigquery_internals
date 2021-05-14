@@ -2,7 +2,7 @@
 
 Clustering is used to organize rows based on the content of one or more columns. Clustering can be used with partitioned tables. The partition and the clustering can be done based on the same column.
 
-![](clustering.png)
+![](img/clustering.png)
 
 When clustering by a column not all rows in that bucket need to have the same value (rather, they need to fall within that buckets range), but every row will belong to one and only one cluster.
 
